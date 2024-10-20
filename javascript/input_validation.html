@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Validation</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" id="username" placeholder="Enter username" required>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            const username = document.getElementById("username").value;
+            // Simple validation to check for special characters
+            if (/[^a-zA-Z0-9]/.test(username)) {
+                alert("Username can only contain letters and numbers!");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+</body>
+</html>
+

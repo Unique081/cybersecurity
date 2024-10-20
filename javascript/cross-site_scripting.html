@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Prevention</title>
+</head>
+<body>
+    <form id="commentForm">
+        <textarea id="comment" placeholder="Enter your comment"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="commentsSection"></div>
+    <script>
+        document.getElementById("commentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const comment = document.getElementById("comment").value;
+            // Escape potentially harmful characters
+            const safeComment = comment.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            document.getElementById("commentsSection").innerHTML += `<p>${safeComment}</p>`;
+        });
+    </script>
+</body>
+</html>
+
